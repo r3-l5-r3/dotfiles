@@ -1,0 +1,14 @@
+# passphrase:
+gwen gum ooo pout
+
+# Bookmarklet URL:
+AU&kp=-1&kaj=m&kam=osm&kak=-1&kao=-1&ks=m&kw=s&ku=-1&kd=1&kh=1&kt=Noto+Sans+UI&k7=181f26&ko=1&kj=181f26&ka=Noto+Sans+UI&k9=6dd4c7&kaa=cbd6e2&kx=cbd6e2&ky=0f273d&kaf=1
+
+# Cloud Save Bookmarklet URL:
+https://duckduckgo.com/?key=2765f4ce61c816d1ff20fc356e3e9e2ce73626c054fa5a88c33ed8881768e8953b99dcc733839c6444544d05ffc1b7f31752f1881d6a5162745c01689eab2f05
+
+# Settings in JSON:
+{"kae":"d","kad":"en_AU","kp":"-1","kaj":"m","kam":"osm","kak":"-1","kao":"-1","ks":"m","kw":"s","ku":"-1","kd":"1","kh":"1","kt":"Noto Sans UI","k7":"181f26","ko":"1","kj":"181f26","ka":"Noto Sans UI","k9":"6dd4c7","kaa":"cbd6e2","kx":"cbd6e2","ky":"0f273d","kaf":"1"}
+
+# Cookie Data:
+ad=en_AU; p=-1; aj=m; am=osm; ak=-1; ao=-1; ae=d; s=m; w=s; u=-1; d=1; h=1; objectKey=2765f4ce61c816d1ff20fc356e3e9e2ce73626c054fa5a88c33ed8881768e8953b99dcc733839c6444544d05ffc1b7f31752f1881d6a5162745c01689eab2f05; t=Noto%20Sans%20UI; 7=181f26; o=1; j=181f26; a=Noto%20Sans%20UI; 9=6dd4c7; aa=cbd6e2; x=cbd6e2; y=0f273d; af=1
