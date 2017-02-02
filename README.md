@@ -1,2 +1,2 @@
 # awesome-dotfiles
-Personal dotfiles for AwesomeWM on Veone PC (Arch Linux).
+Personal dotfiles for on Veone PC (Arch Linux). This includes my AwesomeWM 4.0 configs, termite configs.
