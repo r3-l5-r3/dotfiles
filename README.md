@@ -17,3 +17,6 @@ Firefox CSS are Stylish themes, some with modified colours (as found in the FF-c
 
 Preview screenshots:
 
+![Clean](https://github.com/Relsre/dotfiles/raw/MiAir-laptop/2017-09-09-035435_1920x1080_scrot.png "Clean")
+
+![Dirty](https://github.com/Relsre/dotfiles/raw/MiAir-laptop/2017-09-09-041419_1920x1080_scrot.png "Dirty")
