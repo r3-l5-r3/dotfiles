@@ -1,0 +1,8 @@
+keep-articles-days 60
+mark-as-read-on-hover no
+
+browser "firefox --new-tab %u"
+macro y set browser "firefox --new-tab %u && mpv --fs --ytdl-format=bestvideo+bestaudio %u" ; open-in-browser-and-mark-read ; set browser "firefox --new-tab %u"
+
+articlelist-format "%D | %-16T | %t"
+datetime-format "%d/%m"
