@@ -1,8 +1,16 @@
 # dotfiles
-Personal dotfiles for Veone PC (Arch Linux). This includes my configuration files for AwesomeWM 4.0, dunst and termite.
+Personal dotfiles for Mi Notebook Air laptop(Arch Linux). This includes my configuration files for AwesomeWM 4.0, dunst, termite, and Firefox CSS styles.
+
+Colours are largely based off of [base16-bespin](https://github.com/khamer/base16-termite/blob/master/themes/base16-bespin.config).
+GTK+ programs use the [Pop-Slim-Dark](https://github.com/system76/pop-gtk-theme) theme.
+
+Firefox CSS are Stylish themes, some with modified colours (as found in the FF-css directory), as follows:
+* [Clear Dark Facebook](https://userstyles.org/styles/136318/clear-dark-facebook-by-book777)
+* [Gruvbox new tab](https://userstyles.org/styles/136157/firefox-gruvbox-new-tab)
+* [Linux GTK+ Native Firefox theme](https://userstyles.org/styles/132191/firefox-theme-linux-gtk-native-fx-29)
+* [Nocturnal SoundCloud](https://userstyles.org/styles/129712/nocturnal-soundcloud-theme)
+* [Wikipedia - Clean, readable](https://userstyles.org/styles/62449/wikipedia-clean-readable)
+* [YouTube DeepDark](https://userstyles.org/styles/135831/youtube-deepdark) + [YouTube DeepDark Material](https://userstyles.org/styles/144962/youtube-deepdark-material)
 
 Preview screenshots:
 
-![2017-02-02-053236_1920x1080_scrot](https://cloud.githubusercontent.com/assets/22544090/22548383/1730458e-e981-11e6-90db-9feb19a9dbbe.png)
-
-![2017-02-02-194723_1920x1080_scrot](https://cloud.githubusercontent.com/assets/22544090/22548388/22116eba-e981-11e6-84b3-9e0b21d41229.png)

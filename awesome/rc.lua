@@ -38,13 +38,12 @@ do
 end
 -- }}}
    
--- Start xcompmgr composite manager, nvidia FFCP automatically
-awful.spawn.with_shell("xcompmgr -cFf -D 5 &")
-awful.spawn.with_shell('nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On}"')
+-- Start xcompmgr composite manager automatically
+awful.spawn.with_shell("compton -CGf -D3 -O0.05 &")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/default/theme.lua")
+beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 local terminal = "termite"
@@ -52,7 +51,6 @@ local editor = os.getenv("EDITOR") or "vim"
 local editor_cmd = terminal .. " -e " .. editor
 local browser = "firefox"
 local email = "thunderbird"
-local monitors = "./HDMI-1980_DVI-1024.sh"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -68,6 +66,7 @@ awful.layout.layouts = {
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
+    awful.layout.suit.corner.nw,
 --	awful.layout.suit.fair.horizontal,
 --	awful.layout.suit.spiral,
 --	awful.layout.suit.spiral.dwindle,
@@ -75,7 +74,6 @@ awful.layout.layouts = {
     awful.layout.suit.max,
 --	awful.layout.suit.max.fullscreen,
 --	awful.layout.suit.magnifier,
---	awful.layout.suit.corner.nw,
 --	awful.layout.suit.corner.ne,
 --	awful.layout.suit.corner.sw,
 --	awful.layout.suit.corner.se,
@@ -120,8 +118,8 @@ mypowermenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-				    { "power", mypowermenu },
-                                    { "open terminal", terminal }
+                                    { "open terminal", terminal },
+                                    { "power", mypowermenu }
                                   }
                         })
 
@@ -148,7 +146,7 @@ spacerleft.text = " |"
 -- Initialize widget, use widget({ type = "textbox" }) for awesome < 3.5
 netwidget = wibox.widget.textbox()
 -- Register widget
-vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">⏬ ${enp3s0 down_kb}</span> <span color="#7F9F7F">⏫ ${enp3s0 up_kb}</span>', 3)
+vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">D: ${wlp2s0 down_kb}</span> <span color="#7F9F7F">U: ${wlp2s0 up_kb}</span>', 3)
 
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
@@ -176,11 +174,21 @@ vicious.register(mpdwidget, vicious.widgets.mpd,
         if (args["{state}"] == "Play") then
             return ' ♫  "'.. args["{Title}"]..'" - '.. args["{Artist}"]..''
         elseif (args["{state}"] == "Pause") then
-            return ' Paused: "'.. args["{Title}"]..'" - '.. args["{Artist}"]..''
+            return 'Paused: "'.. args["{Title}"]..'" - '.. args["{Artist}"]..''
         else
             return ''
         end
     end, 10)
+
+-- Create a battery widget (textbox)
+battery = wibox.widget.textbox()
+function getBatteryStatus()
+   local fd= io.popen("/home/cash/.config/awesome/battery_widget.sh")
+   local status = fd:read()
+   fd:close()
+   return status
+end
+-- *(battery status timer further down in config)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = awful.util.table.join(
@@ -245,7 +253,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ " ♠ ", " ♥ ", " ♣ ", " ♦ " }, s,awful.layout.layouts[1])
+    awful.tag({ "♠ ", "♥ ", "♣ ", "♦ " }, s,awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -264,7 +272,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.focused, tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "bottom", screen = s })
+    s.mywibox = awful.wibar({ position = "top", screen = s })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -284,6 +292,8 @@ awful.screen.connect_for_each_screen(function(s)
 	    cpuwidget,
 	    spacer,
 	    memwidget,
+	    spacer,
+	    battery,
 	    spacer,
 	    mykeyboardlayout,
             wibox.widget.systray(),
@@ -347,7 +357,6 @@ globalkeys = awful.util.table.join(
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
-
 
 --    awful.key({ modkey,           }, "Tab",
 --        function ()
@@ -413,28 +422,26 @@ globalkeys = awful.util.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Extra utilities
-    awful.key({ modkey,           }, "F1", function () awful.util.spawn("redshift -x")  end,
+    awful.key({ "Mod1"		  }, "XF86MonBrightnessDown", function () awful.util.spawn("xbacklight -dec 10")		   end,
+	      {description = "decrease brightness by 5%", group = "utilities"}),
+    awful.key({ "Mod1"		  }, "XF86MonBrightnessUp", function () awful.util.spawn("xbacklight -inc 10")		   end,
+	      {description = "increase brightness by 5%", group = "utilities"}),
+    awful.key({ 	          }, "XF86MonBrightnessUp", function () awful.util.spawn("redshift -x")    end,
 	      {description = "disable redshift", group = "utilities"}),
-    awful.key({ modkey,           }, "F2", function () awful.util.spawn("sh .redshift") end,
+    awful.key({ 	          }, "XF86MonBrightnessDown", function () awful.util.spawn("sh .redshift") end,
 	      {description = "enable redshift (script)", group = "utilities"}),
-    awful.key({ modkey,           }, "F3", function () awful.util.spawn(monitors) end,
-	      {description = "redraw monitors with xrandr (script)", group = "utilities"}),
-
     awful.key({                   }, "XF86AudioRaiseVolume", function () awful.util.spawn("sh -c \"pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +5%\"") end,
 	      {description = "raise volume of pulse sink (+5%)", group = "utilities"}),
     awful.key({                   }, "XF86AudioLowerVolume", function () awful.util.spawn("sh -c \"pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ -5%\"") end,
 	      {description = "lower volume of pulse sink (-5%)", group = "utilities"}),
     awful.key({                   }, "XF86AudioMute", function () awful.util.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle") end,
 	      {description = "mute pulse sink", group = "utilities"}),
+    awful.key({                   }, "Print", function () awful.util.spawn("scrot -e 'mv $f /mnt/windows/Data/Pictures/scrots'") end,
+	      {description = "Take screenshot (fullscreen)", group = "utilities"}),
 
-    awful.key({                   }, "Print", function () awful.util.spawn("scrot -me 'mv $f /mnt/data/Pictures/Veone-Linux_scrots'") end,
-	      {description = "Take screenshot (Fullscreen, all monitors)", group = "utilities"}),
-    awful.key({ 	          }, "Scroll_Lock", function () awful.util.spawn("scrot -ube 'mv $f /mnt/data/Pictures/Veone-Linux_scrots'") end,
-	      {description = "Take screenshot (current window w/ border)", group = "utilities"}),
-
-    awful.key({                   }, "XF86Calculator", function () awful.util.spawn("csxlock -f -misc-hack-bold-r-normal--0-0-0-0-m-0-iso8859-1 -b '#181f26' -o '#6dd4c7' -w '#8b56bf'") end,
+    awful.key({ modkey,           }, "XF86MonBrightnessDown", function () awful.util.spawn("csxlock -f -misc-hack-bold-r-normal--0-0-0-0-m-0-iso8859-1 -b '#28211c' -o '#f9ee98' -w '#cf6a4c'") end,
 	      {description = "lock screen (csxlock)", group = "power"}),
-    awful.key({                   }, "XF86Sleep", function () awful.util.spawn("systemctl suspend") end,
+    awful.key({ modkey,           }, "XF86MonBrightnessUp", function () awful.util.spawn("systemctl suspend") end,
 	      {description = "suspend system", group = "power"}),
 
     -- Prompt
@@ -487,12 +494,7 @@ clientkeys = awful.util.table.join(
             c.maximized = not c.maximized
             c:raise()
         end ,
-        {description = "maximize", group = "client"}),
-    awful.key({ modkey, "Mod1"    }, "j",
-        function (c)
-            c:move_to_screen()
-        end ,
-        {description = "move client to next screen", group = "screen"})
+        {description = "maximize", group = "client"})
 )
 
 -- Bind all key numbers to tags.
@@ -577,11 +579,10 @@ awful.rules.rules = {
           "copyq",  -- Includes session name in class.
         },
         class = {
-          "Arandr",
           "Gpick",
           "Kruler",
           "MessageWin",  -- kalarm.
-          "Sxiv",
+	  "gnome-mines",
           "Wpa_gui",
           "pinentry",
           "veromix",
@@ -674,14 +675,12 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
-
--- Window transparency (for use with composite managers e.g. xcompmgr)
-client.connect_signal("focus", function(c)
-	c.border_color = beautiful.border_focus
-	c.opacity = 1
-end)
-client.connect_signal("unfocus", function(c)
-	c.border_color = beautiful.border_normal
-	c.opacity = 0.8
-end)
 -- }}}
+
+-- Battery status timer (for battery widget)
+batteryTimer = timer({timeout = 10})
+batteryTimer:connect_signal("timeout", function()
+  battery:set_markup(getBatteryStatus())
+end)
+batteryTimer:start()
+battery:set_markup(getBatteryStatus())
