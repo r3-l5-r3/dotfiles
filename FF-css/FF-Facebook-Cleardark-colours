@@ -1,0 +1,18 @@
+  --bg-color-background: #1a1612;
+  --bg-color-first: #28211c;
+  --bg-color-second: #28211c;
+  --bg-color-hover: #595856;
+
+  --border-color-top: #595856;
+  --border-color-right: #595856;
+  --border-color-bottom: #595856;
+  --border-color-left: #595856;
+
+  --icon-change-partly: 81%;
+  --icon-change-full: 100%;
+
+  --text-color-first: #f9ee98;
+  --text-color-second: #baae9e;
+  --text-color-green: #54be0d;
+  --text-color-blue: #5ea6ea;
+  --text-color-red: #cf6a4c;
