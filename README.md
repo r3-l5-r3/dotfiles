@@ -3,8 +3,8 @@ Here you'll find dotfiles for some of the past setups/rices/configurations I've 
 
 Screenshot of each configuration, from new to old -- click the caption to go to an individual dotfile repo! :)
 
-### [MiAir - Base16 Atelier Cave (Dark)](https://github.com/Relsre/dotfiles/tree/MiAir-base16-atelier-cave-dark)
-![Clean](https://raw.githubusercontent.com/Relsre/dotfiles/MiAir-base16-atelier-cave-dark/screenshots/clean.png)
+### [MiAir - Base16 Atelier Cave (Dark)](https://github.com/Relsre/dotfiles/tree/MiAir-base16-atelier-cave)
+![Clean](https://raw.githubusercontent.com/Relsre/dotfiles/MiAir-base16-atelier-cave/screenshots/clean.png)
 
 ### [MiAir - Base16 Bespin](https://github.com/Relsre/dotfiles/tree/MiAir-bespin)
 ![Clean](https://raw.githubusercontent.com/Relsre/dotfiles/MiAir-bespin/screenshots/clean.png)
