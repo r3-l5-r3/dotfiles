@@ -1,0 +1,3 @@
+#!/bin/bash
+
+maim /mnt/windows/Data/Pictures/scrots/$(date +%F_%H%M%S)_full.png

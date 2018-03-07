@@ -1,0 +1,7 @@
+--main-bg: #19171c !important;               
+--dark-bg: #26232a !important;              
+--darker-bg: #19171c !important;             
+--main-text: #be4678 !important;                     /* grey */
+--secondary-text: #576ddb !important;        /* yellow */
+--third-text: #2a9292 !important;              /* green*/
+--fourth-text: #398bc6 !important;              /* blue*/  
