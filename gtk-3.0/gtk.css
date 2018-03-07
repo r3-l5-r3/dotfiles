@@ -1,0 +1,18 @@
+VteTerminal, vte-terminal {
+padding: 5px;
+}
+
+/* Resolve borders/shadow problem for Oomox theme in AwesomeWM */
+.window-frame, .window-frame:backdrop {
+    box-shadow: 0 0 0 black;
+    border-style: none;
+    margin: 0;
+    border-radius: 0;
+}
+.titlebar {
+    border-radius: 0;
+}
+window decoration {
+    margin: 0;
+    border: 0;
+}
