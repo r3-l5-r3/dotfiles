@@ -10,4 +10,4 @@ Screenshot of each configuration, from new to old -- click the caption to go to 
 ![Clean](https://raw.githubusercontent.com/Relsre/dotfiles/MiAir-bespin/screenshots/clean.png)
 
 ### [Veone - Base16 Harmonic Dark](https://github.com/Relsre/dotfiles/tree/Veone-base16-harmonic-dark)
-![2017-02-02-053236_1920x1080_scrot](https://cloud.githubusercontent.com/assets/22544090/22548383/1730458e-e981-11e6-90db-9feb19a9dbbe.png)
+![2017-02-02-053236_1920x1080_scrot](https://raw.githubusercontent.com/Relsre/dotfiles/Veone-base16-harmonic-dark/screenshots/clean.png)
