@@ -1,4 +1,4 @@
-# Welcome to my dotfiles repositories!
+# Welcome to my dotfiles repository!
 Here you'll find dotfiles for some of the past setups/rices/configurations I've set up for my PC (Veone) and laptop (MiAir). I use AwesomeWM on Arch Linux for both machines, so you'll be seeing a lot of those.
 
 Screenshot of each configuration, from new to old -- click the caption to go to an individual dotfile repo! :)
