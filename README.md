@@ -1,7 +1,7 @@
 # Welcome to my dotfiles repository!
 Here you'll find dotfiles for some of the past setups/rices/configurations I've set up for my PC (Veone) and laptop (MiAir). I use AwesomeWM on Arch Linux for both machines, so you'll be seeing a lot of those.
 
-Screenshot of each configuration, from new to old -- click the caption to go to an individual dotfile repo! :)
+Screenshot of each configuration, from new to old -- click the caption to go to an individual dotfile branch! :)
 
 ### [MiAir - Base16 Atelier Cave (Dark)](https://github.com/Relsre/dotfiles/tree/MiAir-base16-atelier-cave)
 ![Clean](https://raw.githubusercontent.com/Relsre/dotfiles/MiAir-base16-atelier-cave/screenshots/clean.png)
